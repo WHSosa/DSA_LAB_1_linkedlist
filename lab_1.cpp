@@ -88,7 +88,21 @@ bool removeFront(User*& head) {
 // Deletes the node with matching username (first match only).
 // Return true if a node was found & deleted; false if not found.
 bool removeByUsername(User*& head, const string& username) {
-    // TODO: implement
+    // O(n) time complexity
+    if (head == nullptr) return false;
+    if (head -> username == username) {
+        return removeFront(head);
+    }
+    User* current = head;
+    while (current -> next != nullptr) {
+        if (current -> next -> username == username) {
+            User* toDelete = current -> next;
+            current -> next = toDelete -> next;
+            delete toDelete;
+            return true;
+        }
+        current = current -> next;
+    }
     
     return false;
 }
