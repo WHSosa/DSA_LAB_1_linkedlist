@@ -143,8 +143,23 @@ void printUsers(User* head) {
 }
 
 int main() {
-  
-    // Write code here to test your implementation
-    
+    User* head = nullptr;
+
+    cout << "Insertting Users" <<endl;
+    insertUser(head, "alice", "password");
+    insertUser(head, "bobisgreat", "12345");
+    insertUser(head, "Marie", "Marie");
+
+    printUsers(head);
+
+    cout <<"Authenticate bobisgrate/12345" << (authenticate(head, "bobisgreat", "12345") ? "SUCCESS" : "FAIL") <<endl;
+    cout <<"Authenticate alice/123password" << (authenticate(head, "alice", "password123") ? "SUCCESS" : "FAIL") <<endl;
+
+    cout << "SIZE: " << size(head) <<endl;
+
+    cout << "reving... " <<endl;
+    removeByUsername(head, "bobisgreat");
+    printUsers(head);
+
     return 0;
 }
