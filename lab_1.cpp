@@ -109,7 +109,10 @@ bool removeByUsername(User*& head, const string& username) {
 
 // Deletes ALL nodes and sets head=nullptr. 
 void clearList(User*& head) {
-    // TODO: implement
+    // O(n) time complexity
+    while (head != nullptr) {
+        removeFront(head);
+    }
     
 }
 
