@@ -10,7 +10,9 @@
 // NOTE: In the real world, NEVER store plaintext passwords.
 
 
-// ADD HEADER FILES HERE
+#include <iostream>
+#include <string>
+using namespace std;
 
 // -----------------------------
 // Data Model
@@ -27,14 +29,6 @@ struct User {
     }
 };
 
-
-int main() {
-  
-    // Write code here to test your implementation
-    
-    return 0;
-}
-
 // -----------------------------
 // Core API — implement these
 // -----------------------------
@@ -43,9 +37,22 @@ int main() {
 // If username already exists, do NOT insert a duplicate; return false.
 // Otherwise insert and return true.
 bool insertUser(User*& head, const string& username, const string& password) {
-    // TODO: implement
+    // O(n) time complexity
+    if (head == nullptr) {
+        head = new User(username, password);
+        return true;
+    }
+    User* current = head;
+    while (current->next != nullptr) {
+        if (current -> username == username) {
+            return false;
+        }
+        current = current->next;
+    }
+    if (current -> username == username) return false;
+    current -> next = new User(username, password);
    
-    return false;
+    return true;
 }
 
 // Returns pointer to the node with matching username; otherwise nullptr.
@@ -98,4 +105,9 @@ void printUsers(User* head) {
     
 }
 
-
+int main() {
+  
+    // Write code here to test your implementation
+    
+    return 0;
+}
