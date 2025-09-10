@@ -69,9 +69,9 @@ User* findUser(User* head, const string& username) {
 
 // Returns true if (username, password) matches an existing node; false otherwise.
 bool authenticate(User* head, const string& username, const string& password) {
-    // TODO: implement
-   
-    return false;
+    // O(n) time complexity
+    User* user = findUser(head, username);   
+    return (user != nullptr && user -> password == password);
 }
 
 // Deletes the FIRST node (head) and updates head. No-op if list is empty.
