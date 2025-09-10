@@ -133,8 +133,13 @@ size_t size(User* head) {
 // Prints usernames in order, separated by " -> " then " -> NULL".
 // Example: alice -> bob -> charlie -> NULL
 void printUsers(User* head) {
-    // TODO: implement
-    
+    // O(n) time complexity
+    User* current = head;
+    while (current !=nullptr) {
+        cout << current -> username << " -> ";
+        current = current -> next;
+    }
+    cout << "null" <<endl;
 }
 
 int main() {
